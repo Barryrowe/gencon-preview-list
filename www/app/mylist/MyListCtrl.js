@@ -14,12 +14,7 @@
 		function activate(){
 			vm.myGames = MyListService.getMyGames();
 			console.log("My Games", vm.myGames);
-
-			BGGService.loadGenconPreviewList()
-			.then(function(data){
-				vm.myGames = data;
-			});
-		}
+		}		
 	}
 
 })();

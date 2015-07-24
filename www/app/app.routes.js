@@ -31,12 +31,12 @@
 		    }
 		  })
 
-		  .state('tab.chats', {
-		      url: '/chats',
+		  .state('tab.games', {
+		      url: '/games',
 		      views: {
-		        'tab-chats': {
-		          templateUrl: 'app/templates/tab-chats.html',
-		          controller: 'ChatsCtrl'
+		        'tab-games': {
+		          templateUrl: 'app/previewlist/games.html',
+		          controller: 'BGGListCtrl as vm'
 		        }
 		      }
 		    })

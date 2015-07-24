@@ -3,7 +3,7 @@
 (function(){
 	angular
 		.module('genconPreview')
-		.constant('APIRoute', 'http://localhost:8100/xmlapi2')
+		.constant('APIRoute', 'http://localhost:8100/xmlapi')
 		//.constant('APIRoute', 'http://www.boardgamegeek.com/xmlapi2')
 		.factory('BGGService', BGGService);
 
@@ -13,21 +13,42 @@
 		function _loadGenconPreviewList(){
 			var deferred = $q.defer();
 
-			$http.get(APIRoute + '/geeklist/184821')
-			.success(function(xmlResult){
-				console.log("XML DATA", xmlResult);
+			var now = new Date();
 
-				var jsonVersion = XmlUtil.convertToJson(xmlResult);
-				deferred.resolve(jsonVersion);
-			})
+			$http.get(APIRoute + '/geeklist/184821')
+			.success(function(xmlResult){				
+				var jsonVersion = XmlUtil.convertToJson(xmlResult);				
+				console.log("JSON Data", jsonVersion);
+				
+				deferred.resolve(jsonVersion.geeklist.item);								
+			})			
 			.error(function(err){
 				deferred.reject(err);
 			});
-
+					
 			return deferred.promise; 
 		}
+
+		function _loadGameDetails(objectId){
+			var deferred = $q.defer();
+
+			var url = APIRoute + '/boardgame/' + objectId;
+			
+			$http.get(url)
+			.success(function(xmlData){
+				deferred.resolve(XmlUtil.convertToJson(xmlData));
+			})
+			.error(function(err){
+				deferred.resolve(err);
+			});					
+					
+
+			return deferred.promise;
+		}
+
 		return {
-			loadGenconPreviewList: _loadGenconPreviewList
+			loadGenconPreviewList: _loadGenconPreviewList,
+			loadGameDetails: _loadGameDetails
 		};		
 	}
 })();

@@ -11,6 +11,7 @@
   angular        
     .module('genconPreview', 
       ['ionic', 
+       'ngPromiseExtras',
        'genconPreview.utils'])
 
     console.log("module ready")
