@@ -1,4 +1,10 @@
 {
   "name": "genconpreview",
-  "app_id": ""
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/xmlapi2",
+      "proxyUrl": "https://www.boardgamegeek.com/xmlapi2"
+    }
+  ]
 }
