@@ -8,10 +8,10 @@ Install <a href="https://github.com/joyent/node/wiki/Installation">node</a>
 
 With node installed:
 
-1. Install <a href="https://cordova.apache.org/">Cordova</a> and <a href="http://ionicframework.com">Ionic</a>
+1. Install <a href="https://cordova.apache.org/">Cordova</a> and <a href="http://ionicframework.com">Ionic</a> for app building CLI tools. Install <a href="http://karma-runner.github.io/0.13/index.html">Karma</a> and <a href="https://www.npmjs.com/package/karma-cli">karma-cli</a> to run the unit tests.
 
   ```
-  npm install -g cordova ionic
+  npm install -g cordova ionic karma karma-cli
   ```
 2. Install the dependencies for this project
 
