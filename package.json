@@ -2,8 +2,9 @@
   "name": "genconpreview",
   "version": "1.0.0",
   "description": "genconpreview: An Ionic project",
-  "scripts":{
-	"start":"ionic serve --lab --livereload"
+  "scripts": {
+    "start": "ionic serve --lab --livereload",
+    "test": "karma start karma.conf.js --browsers Chrome --single-run"
   },
   "dependencies": {
     "gulp": "^3.5.6",
@@ -15,6 +16,9 @@
   "devDependencies": {
     "bower": "^1.3.3",
     "gulp-util": "^2.2.14",
+    "jasmine-core": "^2.3.4",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
