@@ -1,1 +1,18 @@
-/* Empty. Add your own CSS if you like */
+.game-item h3{
+	overflow: visible;
+    text-overflow: initial;
+    white-space: normal;
+}
+
+.img-responsive{
+	/*height: auto;
+	max-width: 100%;
+	*/
+	width: 100%;
+	height: auto;
+}
+
+.label{
+	font-weight: bold;
+	padding-right: 0.25em;
+}

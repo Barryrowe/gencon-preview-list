@@ -1,36 +1,33 @@
 <ion-view view-title="BGG Preview List">
+<ion-header-bar align-title="left" class="bar-positive">
+  <div class="buttons">
+    <button class="button" ng-click="doSomething()">Left Button</button>
+  </div>
+  <h1 class="title">Title!</h1>
+  <div class="buttons">
+    <button class="button">Right Button</button>
+  </div>
+</ion-header-bar>
   <ion-content class="padding">
     
-    <div class="list card" ng-repeat="game in vm.games track by $index">
-      <div class="item item-divider" ng-click="vm.loadGameDetails(game)">{{game["@attributes"].objectname}}</div>
-      <div class="item item-body">
-        <div class="row">      
-          <div class="col col-50">          
-            Score: {{game["@attributes"].thumbs}}
-          </div>
-          <div class="col col-50">          
-            GameType: {{game["@attributes"].subtype}}
-          </div>
-        </div>
-        <div class="row" ng-if="game.details">
-          <div class="col col-50">
-            <img ng-src="{{vm.getGameImageUrl(game)}}" class="col" />
-          </div>
-          <div class="col col-50">
-            {{game.details.boardgames.boardgame.boardgamepublisher["#text"]}}
-          </div>
-        </div>
-        <div class="row" ng-if="game.details">
-          <div class="col" ng-bind-html="game.details.boardgames.boardgame.description['#text']">          
-          </div>          
-        </div>
 
-        <div ng-if="game.error">
-          {{game.error}}
-        </div>
-      </div>
-    </div>
+    <ion-list>
+      <ion-item class="game-item item-remove-animate item-icon-right item-thumbnail-left" ng-repeat="game in vm.games | orderBy: vm.orderBy" type="item-text-wrap" ui-sref="tab.game-detail({gameId: game.objectId})">
+        <!-- <img ng-src="{{game.details.thumbnailUrl}}"> -->
+        
+        <img ng-if="game.details.thumbnailUrl" ng-src="{{game.details.thumbnailUrl}}" />
 
+        
+        <h3>{{game.title}}</h3>
+        <p>{{game.details.publisher}}</p>
+        <span class="badge badge-assertive">{{game.score}}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="alert('did this')">
+          Ignore?
+        </ion-option-button>
+      </ion-item>
+    </ion-list>    
     
   </ion-content>
 </ion-view>

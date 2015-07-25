@@ -12,9 +12,8 @@
     .module('genconPreview', 
       ['ionic', 
        'ngPromiseExtras',
+       'cgBusy',
        'genconPreview.utils'])
-
-    console.log("module ready")
 
 })();
 

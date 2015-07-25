@@ -4,8 +4,7 @@
 	angular
 		.module('genconPreview')
 		.config(function($stateProvider, $urlRouterProvider) {
-
-			console.log("config started");
+			
 		  // Ionic uses AngularUI Router which uses the concept of states
 		  // Learn more here: https://github.com/angular-ui/ui-router
 		  // Set up the various states which the app can be in.
@@ -40,12 +39,12 @@
 		        }
 		      }
 		    })
-		    .state('tab.chat-detail', {
-		      url: '/chats/:chatId',
+		    .state('tab.game-detail', {
+		      url: '/games/:gameId',
 		      views: {
-		        'tab-chats': {
-		          templateUrl: 'app/templates/chat-detail.html',
-		          controller: 'ChatDetailCtrl'
+		        'tab-games': {
+		          templateUrl: 'app/previewlist/game-detail.html',
+		          controller: 'GameDetailCtrl as vm'
 		        }
 		      }
 		    })
@@ -65,5 +64,4 @@
 
 		});
 
-	console.log("routes ready");
 })();

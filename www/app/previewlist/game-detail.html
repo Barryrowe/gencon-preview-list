@@ -1,0 +1,35 @@
+<ion-view view-title="{{vm.game.title}}">
+  <ion-content class="padding">
+ 	<div class="row"> 
+	  	<div class="col col-33">
+		    <img class="img-responsive" ng-src="{{vm.game.details.imageUrl}}">
+		</div>
+		<div class="col col-67">
+			<div class="row" ng-if="vm.game.details.publisher">
+				<span class="label">Publisher:</span>{{vm.game.details.publisher}}
+			</div>
+			<div class="row" ng-if="vm.game.details.publisher">
+				<span class="label">Release Year:</span>{{vm.game.details.yearPublished}}
+			</div>
+			<div class="row" ng-if="vm.game.details.category">
+				<span class="label">Category</span>{{vm.game.details.category}}
+			</div>
+			<div class="row" ng-if="vm.game.details.version">
+				<span class="label">Version:</span>{{vm.game.details.version}}
+			</div>
+		</div>
+	</div>
+	<h3>Description:</h3>
+    <p ng-bind-html="vm.game.details.description">      
+    </p>
+
+	<h3>Comments:</h3>
+    <div class="list card" ng-repeat="comment in vm.game.details.comments">
+      <div class="item item-divider">{{comment.user}}</div>
+      <div class="item item-body">
+        <div ng-bind-html="comment.message">          
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

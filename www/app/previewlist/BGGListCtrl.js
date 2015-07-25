@@ -5,33 +5,30 @@
 		.module('genconPreview')
 		.controller('BGGListCtrl', BGGListCtrl);
 
-	BGGListCtrl.$inject = ['BGGService'];
-	function BGGListCtrl(BGGService){
+	BGGListCtrl.$inject = ['BGGService', '$ionicLoading'];
+	function BGGListCtrl(BGGService, $ionicLoading){
 		var vm = this;
 
-		activate();
+		activate();	
 
-		function activate(){			
+		function activate(){
+
+			vm.orderBy = "-score";
+				
+			$ionicLoading.show({
+				template: "Loading GenCon Preview List"
+			});		
 			BGGService.loadGenconPreviewList()
 			.then(function(data){
-				vm.games = data;
-			});
-		}
-
-		vm.loadGameDetails = function(game){
-			BGGService.loadGameDetails(game["@attributes"].objectid)
-			.then(function(details){
-				game.details = details;
-				console.log(game.details);
+				vm.games = data;								
 			})
 			.catch(function(err){
-				game.error = err;
+				console.error(err);
+			})
+			.finally(function(){
+				$ionicLoading.hide();
 			});
-		};
 
-		vm.getGameImageUrl = function(game){
-			return game.details.boardgames.boardgame.image['#text'];
 		}
-
 	}
 })();
