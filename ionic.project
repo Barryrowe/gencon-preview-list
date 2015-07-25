@@ -6,5 +6,12 @@
       "path": "/xmlapi",
       "proxyUrl": "https://www.boardgamegeek.com/xmlapi"
     }
+  ],
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
   ]
 }

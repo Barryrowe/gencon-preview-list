@@ -4,7 +4,7 @@
 	angular
 		.module('genconPreview')
 		.constant('APIRoute', 'http://localhost:8100/xmlapi')
-		//.constant('APIRoute', 'http://www.boardgamegeek.com/xmlapi2')
+		//.constant('APIRoute', 'http://www.boardgamegeek.com/xmlapi')
 		.factory('BGGService', BGGService);
 
 	BGGService.$inject = ['$http', '$q', 'Storage', 'XmlUtil', 'APIRoute'];
@@ -58,6 +58,13 @@
 				version: __extractPropertyIfExists(boardgameDetails.boardgameversion, "#text"),
 				comments: []
 			};
+
+			if(deets.thumbnailUrl && deets.thumbnailUrl.indexOf("//") === 0){
+				deets.thumbnailUrl = "http:" + deets.thumbnailUrl;
+			}
+			if(deets.imageUrl && deets.imageUrl.indexOf("//") === 0){
+				deets.imageUrl = "http:" + deets.imageUrl;
+			}
 			console.log("detail: ", boardgameDetails);
 			if(boardgameDetails.comment){
 				if(boardgameDetails.comment instanceof Array){
@@ -79,17 +86,16 @@
 
         function __loadPreviewList(){
         	var deferred = $q.defer();
-
-    
+    		
 			$http.get(APIRoute + '/geeklist/' + GEEK_LIST_ID)
-			.success(function(xmlResult){				
+			.success(function(xmlResult){							
 				var jsonVersion = XmlUtil.convertToJson(xmlResult);				
                 if(_currentPreviewList === undefined || _currentPreviewList.length < 1){
                     _currentPreviewList = __translateGamesList(jsonVersion.geeklist.item);
                 }			                
                 deferred.resolve(_currentPreviewList);
 			})					
-			.error(function(err){
+			.error(function(err){				
 				deferred.reject(err);
 			});	
 				

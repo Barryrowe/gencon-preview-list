@@ -22,10 +22,10 @@
 			.then(function(data){
 				vm.games = data;								
 			})
-			.catch(function(err){
+			.catch(function(err){				
 				console.error(err);
 			})
-			.finally(function(){
+			.finally(function(){				
 				$ionicLoading.hide();
 			});
 
