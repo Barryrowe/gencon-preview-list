@@ -19,8 +19,14 @@ With node installed:
   cd to/root/of/this/repo
   npm install
   ```
-3. Start up the project in lab mode in your browser
+3. Run the Unit Tests
+
+  ```
+  npm test
+  ```
+4. Start up the project in lab mode in your browser
 
   ```
   npm start
   ```
+
